@@ -1,0 +1,12 @@
+id: PQL-ACM-001
+title: ACM Certificate uses quantum-vulnerable key algorithm
+resource_type: aws_acm_certificate
+condition:
+  attribute: key_algorithm
+  in: [RSA_2048, RSA_3072, RSA_4096, EC_prime256v1, EC_secp384r1, EC_secp521r1]
+exposure: authenticity
+base_severity: high
+message: "Certificate uses {value}, posing a future authenticity risk."
+references:
+  - "NIST SP 800-56B"
+remediation_ref: acm_pca_mldsa

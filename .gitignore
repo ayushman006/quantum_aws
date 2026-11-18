@@ -1,0 +1,24 @@
+# Python caches
+__pycache__/
+*.py[cod]
+*$py.class
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+.coverage
+
+# IDE and AI configs
+.cursor/
+.agents/
+AGENTS.md
+CLAUDE.md
+
+# Intermediate audit reports and trackers
+*AUDIT_REPORT*.md
+STATUS_REPORT*.md
+PROGRESS.md
+
+# Package distribution builds (for later)
+dist/
+build/
+*.egg-info/

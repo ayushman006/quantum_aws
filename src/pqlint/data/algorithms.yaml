@@ -1,0 +1,43 @@
+algorithms:
+  # Quantum-Vulnerable (Asymmetric key exchange & signatures)
+  RSA_2048:
+    class: quantum-vulnerable
+    rationale: "Vulnerable to Shor's algorithm, which solves integer factorization in polynomial time on a quantum computer."
+    reference: "NIST SP 800-56B"
+    replacement: "ML-KEM or hybrid equivalents"
+  RSA_3072:
+    class: quantum-vulnerable
+    rationale: "Vulnerable to Shor's algorithm."
+    reference: "NIST SP 800-56B"
+    replacement: "ML-KEM or hybrid equivalents"
+  ECC_NIST_P256:
+    class: quantum-vulnerable
+    rationale: "Vulnerable to Shor's algorithm, which solves discrete logarithms efficiently."
+    reference: "NIST SP 800-56A"
+    replacement: "ML-KEM / ML-DSA"
+
+  # Quantum-Weakened (Symmetric & Hashing)
+  AES_128:
+    class: quantum-weakened
+    rationale: "Effective key strength is halved by Grover's algorithm, reducing it to ~64 bits."
+    reference: "NIST Post-Quantum FAQ"
+    replacement: "AES_256"
+
+  # Quantum-Safe
+  AES_256:
+    class: quantum-safe
+    rationale: "Retains ~128 bits of security against Grover's algorithm, considered secure against CRQCs."
+    reference: "NIST Post-Quantum FAQ"
+    replacement: null
+
+  # Post-Quantum (FIPS 203, 204)
+  ML_KEM:
+    class: post-quantum
+    rationale: "NIST FIPS 203 standardized module-lattice-based key encapsulation mechanism."
+    reference: "NIST FIPS 203"
+    replacement: null
+  ML_DSA:
+    class: post-quantum
+    rationale: "NIST FIPS 204 standardized module-lattice-based digital signature algorithm."
+    reference: "NIST FIPS 204"
+    replacement: null

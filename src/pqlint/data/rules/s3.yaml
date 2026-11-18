@@ -1,0 +1,11 @@
+id: PQL-S3-001
+title: S3 Bucket uses non-KMS encryption
+resource_type: aws_s3_bucket_server_side_encryption_configuration
+condition:
+  attribute: rule.apply_server_side_encryption_by_default.sse_algorithm
+  in: [AES256]
+exposure: confidentiality
+base_severity: info
+message: "Bucket uses standard AES256. While quantum-safe against Grover's algorithm, centralized KMS key management is recommended for hybrid readiness."
+references:
+  - "NIST Post-Quantum FAQ"

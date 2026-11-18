@@ -1,0 +1,12 @@
+id: PQL-KMS-001
+title: Asymmetric KMS key uses quantum-vulnerable algorithm
+resource_type: aws_kms_key
+condition:
+  attribute: customer_master_key_spec
+  in: [RSA_2048, RSA_3072, RSA_4096, ECC_NIST_P256, ECC_NIST_P384, ECC_NIST_P521, ECC_SECG_P256K1]
+exposure: authenticity
+base_severity: high
+message: "KMS key uses {value}, which is vulnerable to Shor's algorithm."
+references:
+  - "NIST FIPS 204 / NIST IR 8547"
+remediation_ref: kms_asymmetric
